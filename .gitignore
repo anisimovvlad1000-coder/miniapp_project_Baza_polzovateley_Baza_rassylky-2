@@ -11,9 +11,9 @@ dist/
 build/
 
 # Базы данных (важно!)
-*.db
-miniapp.db
-broadcast.db
+#*.db
+#miniapp.db
+#broadcast.db
 
 # Логи и кэш
 *.log
