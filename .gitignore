@@ -34,5 +34,5 @@ logs/
 Thumbs.db
 
 # Файлы настроек Heroku/Render (если будут)
-Procfile
+#Procfile
 #requirements.txt  # Можно добавить, если хотите их игнорировать, но обычно их нужно коммитить
