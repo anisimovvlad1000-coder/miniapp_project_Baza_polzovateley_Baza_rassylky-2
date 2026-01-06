@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бурение скважин Днепр</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        :root {
+            --tg-theme-bg-color: #ffffff;
+            --tg-theme-text-color: #212121;
+            --tg-theme-hint-color: #707579;
+            --tg-theme-button-color: #3390ec;
+            --tg-theme-button-text-color: #ffffff;
+            --color-water: #0088cc;
+            --color-earth: #8b4513;
+        }
+        body { background-color: var(--tg-theme-bg-color); color: var(--tg-theme-text-color); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; padding-bottom: 80px; }
+        .container { padding: 15px; max-width: 600px; margin: 0 auto; }
+        h1, h2, h3 { color: var(--color-water); margin-top: 0; }
+        h1 { font-size: 1.8rem; line-height: 1.2; margin-bottom: 10px; }
+        h2 { font-size: 1.4rem; margin-top: 20px; border-bottom: 2px solid #eee; padding-bottom: 8px; }
+        h3 { font-size: 1.1rem; color: var(--tg-theme-text-color); }
+        p { line-height: 1.6; color: var(--tg-theme-text-color); margin-bottom: 12px; }
+        .card { background: rgba(0,0,0,0.03); border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid rgba(0,0,0,0.05); }
+        .card-list { list-style: none; padding: 0; margin: 0; }
+        .card-list li { padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
+        .price-tag { font-weight: bold; color: var(--color-earth); }
+        .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .benefit-item { text-align: center; padding: 10px; background: #f8fbff; border-radius: 8px; font-size: 0.9rem; font-weight: 500; }
+        
+        /* Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+        .gallery-item { border-radius: 8px; overflow: hidden; background: #eee; position: relative; aspect-ratio: 1/1; }
+        .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-item.video { grid-column: span 2; aspect-ratio: 16/9; }
+
+        /* Process */
+        .step { display: flex; gap: 10px; margin-bottom: 12px; }
+        .step-num { background: var(--color-water); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+        .step-content strong { display: block; margin-bottom: 2px; }
+
+        /* Forms & Buttons */
+        .btn-primary { width: 100%; padding: 14px; background-color: var(--tg-theme-button-color); color: var(--tg-theme-button-text-color); border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; }
+        .btn-primary:active { opacity: 0.8; }
+        input, textarea, select { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid var(--tg-theme-hint-color); border-radius: 8px; background: var(--tg-theme-bg-color); color: var(--tg-theme-text-color); box-sizing: border-box; font-size: 16px; }
+        
+        /* Status */
+        .status-msg { text-align: center; padding: 10px; margin-top: 10px; border-radius: 8px; font-weight: bold; display: none; }
+        .status-success { background: #e6f7ee; color: #1a8b52; display: block; }
+        .status-error { background: #fce8e6; color: #d23a35; display: block; }
+
+        /* Navigation */
+        .bottom-menu { position: fixed; bottom: 0; left: 0; width: 100%; background-color: var(--tg-theme-bg-color); border-top: 1px solid var(--tg-theme-hint-color); display: flex; justify-content: space-around; padding: 8px 0; z-index: 100; box-shadow: 0 -2px 5px rgba(0,0,0,0.05); }
+        .menu-btn { background: none; border: none; color: var(--tg-theme-hint-color); font-size: 10px; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+        .menu-btn span { font-size: 18px; }
+        .menu-btn.active { color: var(--tg-theme-button-color); }
+        
+        .view { display: none; animation: fadeIn 0.3s ease; }
+        .view.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    
+    <!-- HOME -->
+    <div id="view-home" class="view active">
+        <div class="container">
+            <div class="card" style="background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%); border: none;">
+                <h1>💧 Бурение скважин на воду</h1>
+                <p>Днепр и Днепропетровская область</p>
+            </div>
+            <h2>Почему мы?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">🚛<br>Мини-техника</div>
+                <div class="benefit-item">🛡️<br>Гарантия</div>
+                <div class="benefit-item">💧<br>Чистая вода</div>
+                <div class="benefit-item">⚡<br>За 1 день</div>
+            </div>
+            <div class="card" style="margin-top: 20px;">
+                <h3>Стоимость</h3>
+                <ul class="card-list">
+                    <li><span>Бурение (1м):</span> <span class="price-tag">500 грн</span></li>
+                    <li><span>Труба (1м):</span> <span class="price-tag">400 грн</span></li>
+                    <li><span>Абиссинский колодец:</span> <span class="price-tag">от 3000 грн</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div id="view-gallery" class="view">
+        <div class="container">
+            <h2>Галерея работ</h2>
+            <div class="card">
+                <div class="gallery-grid">
+                    <div class="gallery-item video">
+                        <video controls poster="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&q=80">
+                            <source src="https://cdn.coverr.co/videos/coverr-drilling-a-hole-in-the-ground-5594/1080p.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621112904887-4f5e2813c468?auto=format&fit=crop&w=400&q=80"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1590674899505-1c5c4195c16a?auto=format&fit=crop&w=400&q=80"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div id="view-services" class="view">
+        <div class="container">
+            <h2>Обустройство</h2>
+            <div class="card">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content"><strong>Выбор места</strong>Анализ участка.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content"><strong>Бурение</strong>До водоносного слоя.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content"><strong>Обсадка</strong>Стальные трубы.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBSCRIBE (СКИДКИ) -->
+    <div id="view-subscribe" class="view">
+        <div class="container">
+            <h2>Скидки и рассылка</h2>
+            <div class="card">
+                <h3>Укажите данные для скидки</h3>
+                
+                <label style="font-size: 12px; color: var(--tg-theme-hint-color);">Ваш район бурения (обязательно)</label>
+                <select id="sub-region">
+                    <option value="" disabled selected>Загрузка...</option>
+                </select>
+
+                <input type="text" id="sub-comment" placeholder="Ваш комментарий или вопрос">
+                
+                <div id="sub-status" class="status-msg"></div>
+                <button class="btn-primary" id="btn-sub">Получить скидку</button>
+                
+                <div style="font-size: 12px; color: #666; margin-top: 10px;">
+                    Мы уведомим вас о специальных условиях в выбранном районе. 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div id="view-about" class="view">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="card">
+                <p><strong>Телеграм:</strong> @drill_dnepr_bot</p>
+                <p><strong>Телефон:</strong> +38 (050) 123-45-67</p>
+                <div style="text-align: center; margin-top: 15px; font-size: 12px; color: var(--tg-theme-hint-color);">
+                    <a href="/admin" style="color: inherit; text-decoration: none;">Войти как Admin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-menu">
+        <button class="menu-btn" data-target="view-gallery"><span>📸</span>Фото</button>
+        <button class="menu-btn" data-target="view-services"><span>🛠️</span>Услуги</button>
+        <button class="menu-btn active" data-target="view-home" style="order: -1; transform: scale(1.2); color: var(--tg-theme-text-color);"><span>🏠</span></button>
+        <button class="menu-btn" data-target="view-subscribe"><span>📞</span>СКИДКИ</button>
+        <button class="menu-btn" data-target="view-about"><span>📍</span>Контакты</button>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        if (tg) { tg.ready(); tg.expand(); }
+        const user = tg ? tg.initDataUnsafe.user : null;
+
+        // --- Загрузка регионов ---
+        async function loadRegions() {
+            try {
+                const response = await fetch('/api/get_regions');
+                const regions = await response.json();
+                const select = document.getElementById('sub-region');
+                select.innerHTML = '<option value="" disabled selected>Выберите район</option>';
+                regions.forEach(r => {
+                    const opt = document.createElement('option');
+                    opt.value = r.id;
+                    opt.textContent = r.name;
+                    select.appendChild(opt);
+                });
+            } catch (e) {
+                console.error("Ошибка загрузки регионов", e);
+            }
+        }
+
+        // Navigation
+        document.querySelectorAll('.menu-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+                document.getElementById(btn.dataset.target).classList.add('active');
+                if (tg && tg.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
+            });
+        });
+
+        // Subscription Logic
+        document.getElementById('btn-sub').addEventListener('click', async () => {
+            const comment = document.getElementById('sub-comment').value;
+            const regionId = document.getElementById('sub-region').value;
+
+            if (!regionId) { 
+                alert('Пожалуйста, выберите район бурения'); 
+                return; 
+            }
+            if (!comment.trim()) { alert('Опишите задачу'); return; }
+
+            const statusDiv = document.getElementById('sub-status');
+            const btn = document.getElementById('btn-sub');
+            btn.disabled = true; btn.innerText = "Отправка...";
+            statusDiv.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ 
+                        user_id: user ? user.id : 999999999, 
+                        first_name: user ? user.first_name : 'Test', 
+                        username: user ? user.username : 'test', 
+                        comment: comment,
+                        region_id: regionId // Отправляем как есть (строка или число)
+                    })
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    statusDiv.className = 'status-msg status-success';
+                    statusDiv.innerText = "✅ Заявка отправлена! Ожидайте скидочное предложение.";
+                    statusDiv.style.display = 'block';
+                    document.getElementById('sub-comment').value = "";
+                    document.getElementById('sub-region').selectedIndex = 0;
+                    if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+                } else { 
+                    throw new Error(result.message || 'Error'); 
+                }
+            } catch (e) {
+                statusDiv.className = 'status-msg status-error';
+                statusDiv.innerText = "❌ Ошибка отправки";
+                statusDiv.style.display = 'block';
+                console.error(e);
+                if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('error');
+            } finally {
+                btn.disabled = false; btn.innerText = "Получить скидку";
+            }
+        });
+
+        // Запуск загрузки данных при старте
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadRegions);
+        } else {
+            loadRegions();
+        }
+    </script>
+</body>
+</html>

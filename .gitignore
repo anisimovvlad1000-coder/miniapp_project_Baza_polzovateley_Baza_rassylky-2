@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Базы данных (важно!)
+*.db
+miniapp.db
+broadcast.db
+
+# Логи и кэш
+*.log
+logs/
+
+# Переменные окружения (если будете использовать .env)
+.env
+.env.local
+
+# IDE (редакторы кода)
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS (системные файлы)
+.DS_Store
+Thumbs.db
+
+# Файлы настроек Heroku/Render (если будут)
+Procfile
+#requirements.txt  # Можно добавить, если хотите их игнорировать, но обычно их нужно коммитить
