@@ -15,50 +15,237 @@
             --color-water: #0088cc;
             --color-earth: #8b4513;
         }
-        body { background-color: var(--tg-theme-bg-color); color: var(--tg-theme-text-color); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; padding-bottom: 80px; }
-        .container { padding: 15px; max-width: 600px; margin: 0 auto; }
-        h1, h2, h3 { color: var(--color-water); margin-top: 0; }
-        h1 { font-size: 1.8rem; line-height: 1.2; margin-bottom: 10px; }
-        h2 { font-size: 1.4rem; margin-top: 20px; border-bottom: 2px solid #eee; padding-bottom: 8px; }
-        h3 { font-size: 1.1rem; color: var(--tg-theme-text-color); }
-        p { line-height: 1.6; color: var(--tg-theme-text-color); margin-bottom: 12px; }
-        .card { background: rgba(0,0,0,0.03); border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid rgba(0,0,0,0.05); }
-        .card-list { list-style: none; padding: 0; margin: 0; }
-        .card-list li { padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
-        .price-tag { font-weight: bold; color: var(--color-earth); }
-        .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .benefit-item { text-align: center; padding: 10px; background: #f8fbff; border-radius: 8px; font-size: 0.9rem; font-weight: 500; }
+        body { 
+            background-color: var(--tg-theme-bg-color); 
+            color: var(--tg-theme-text-color); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            padding-bottom: 80px; 
+        }
+        .container { 
+            padding: 15px; 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+        h1, h2, h3 { 
+            color: var(--color-water); 
+            margin-top: 0; 
+        }
+        h1 { 
+            font-size: 1.8rem; 
+            line-height: 1.2; 
+            margin-bottom: 10px; 
+        }
+        h2 { 
+            font-size: 1.4rem; 
+            margin-top: 20px; 
+            border-bottom: 2px solid #eee; 
+            padding-bottom: 8px; 
+        }
+        h3 { 
+            font-size: 1.1rem; 
+            color: var(--tg-theme-text-color); 
+        }
+        p { 
+            line-height: 1.6; 
+            color: var(--tg-theme-text-color); 
+            margin-bottom: 12px; 
+        }
+        .card { 
+            background: rgba(0,0,0,0.03); 
+            border-radius: 12px; 
+            padding: 15px; 
+            margin-bottom: 15px; 
+            border: 1px solid rgba(0,0,0,0.05); 
+        }
+        .card-list { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+        .card-list li { 
+            padding: 8px 0; 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .price-tag { 
+            font-weight: bold; 
+            color: var(--color-earth); 
+        }
+        .benefits-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 10px; 
+        }
+        .benefit-item { 
+            text-align: center; 
+            padding: 10px; 
+            background: #f8fbff; 
+            border-radius: 8px; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+        }
         
         /* Gallery */
-        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
-        .gallery-item { border-radius: 8px; overflow: hidden; background: #eee; position: relative; aspect-ratio: 1/1; }
-        .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; }
-        .gallery-item.video { grid-column: span 2; aspect-ratio: 16/9; }
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
+            margin-top: 10px; 
+        }
+        .gallery-item { 
+            border-radius: 8px; 
+            overflow: hidden; 
+            background: #eee; 
+            position: relative; 
+            aspect-ratio: 1/1; 
+        }
+        .gallery-item img, 
+        .gallery-item video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            background: #f0f0f0;
+        }
+        .gallery-item.video { 
+            grid-column: span 2; 
+            aspect-ratio: 16/9; 
+        }
+        .gallery-item .video-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+        }
 
         /* Process */
-        .step { display: flex; gap: 10px; margin-bottom: 12px; }
-        .step-num { background: var(--color-water); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
-        .step-content strong { display: block; margin-bottom: 2px; }
+        .step { 
+            display: flex; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+        }
+        .step-num { 
+            background: var(--color-water); 
+            color: white; 
+            width: 24px; 
+            height: 24px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 12px; 
+            flex-shrink: 0; 
+            margin-top: 2px; 
+        }
+        .step-content strong { 
+            display: block; 
+            margin-bottom: 2px; 
+        }
 
         /* Forms & Buttons */
-        .btn-primary { width: 100%; padding: 14px; background-color: var(--tg-theme-button-color); color: var(--tg-theme-button-text-color); border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; }
-        .btn-primary:active { opacity: 0.8; }
-        input, textarea, select { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid var(--tg-theme-hint-color); border-radius: 8px; background: var(--tg-theme-bg-color); color: var(--tg-theme-text-color); box-sizing: border-box; font-size: 16px; }
+        .btn-primary { 
+            width: 100%; 
+            padding: 14px; 
+            background-color: var(--tg-theme-button-color); 
+            color: var(--tg-theme-button-text-color); 
+            border: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            font-size: 16px; 
+            cursor: pointer; 
+            margin-top: 10px; 
+        }
+        .btn-primary:active { 
+            opacity: 0.8; 
+        }
+        input, textarea, select { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 8px 0; 
+            border: 1px solid var(--tg-theme-hint-color); 
+            border-radius: 8px; 
+            background: var(--tg-theme-bg-color); 
+            color: var(--tg-theme-text-color); 
+            box-sizing: border-box; 
+            font-size: 16px; 
+        }
         
         /* Status */
-        .status-msg { text-align: center; padding: 10px; margin-top: 10px; border-radius: 8px; font-weight: bold; display: none; }
-        .status-success { background: #e6f7ee; color: #1a8b52; display: block; }
-        .status-error { background: #fce8e6; color: #d23a35; display: block; }
+        .status-msg { 
+            text-align: center; 
+            padding: 10px; 
+            margin-top: 10px; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            display: none; 
+        }
+        .status-success { 
+            background: #e6f7ee; 
+            color: #1a8b52; 
+            display: block; 
+        }
+        .status-error { 
+            background: #fce8e6; 
+            color: #d23a35; 
+            display: block; 
+        }
 
         /* Navigation */
-        .bottom-menu { position: fixed; bottom: 0; left: 0; width: 100%; background-color: var(--tg-theme-bg-color); border-top: 1px solid var(--tg-theme-hint-color); display: flex; justify-content: space-around; padding: 8px 0; z-index: 100; box-shadow: 0 -2px 5px rgba(0,0,0,0.05); }
-        .menu-btn { background: none; border: none; color: var(--tg-theme-hint-color); font-size: 10px; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
-        .menu-btn span { font-size: 18px; }
-        .menu-btn.active { color: var(--tg-theme-button-color); }
+        .bottom-menu { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            background-color: var(--tg-theme-bg-color); 
+            border-top: 1px solid var(--tg-theme-hint-color); 
+            display: flex; 
+            justify-content: space-around; 
+            padding: 8px 0; 
+            z-index: 100; 
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.05); 
+        }
+        .menu-btn { 
+            background: none; 
+            border: none; 
+            color: var(--tg-theme-hint-color); 
+            font-size: 10px; 
+            font-weight: 600; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 4px; 
+            cursor: pointer; 
+        }
+        .menu-btn span { 
+            font-size: 18px; 
+        }
+        .menu-btn.active { 
+            color: var(--tg-theme-button-color); 
+        }
         
-        .view { display: none; animation: fadeIn 0.3s ease; }
-        .view.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .view { 
+            display: none; 
+            animation: fadeIn 0.3s ease; 
+        }
+        .view.active { 
+            display: block; 
+        }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(5px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
     </style>
 </head>
 <body>
@@ -75,14 +262,14 @@
                 <div class="benefit-item">🚛<br>Мини-техника</div>
                 <div class="benefit-item">🛡️<br>Гарантия</div>
                 <div class="benefit-item">💧<br>Чистая вода</div>
-                <div class="benefit-item">⚡<br>За 1 день</div>
+                <div class="benefit-item">⚡<br>За 2-4 дня</div>
             </div>
             <div class="card" style="margin-top: 20px;">
                 <h3>Стоимость</h3>
                 <ul class="card-list">
-                    <li><span>Бурение (1м):</span> <span class="price-tag">500 грн</span></li>
-                    <li><span>Труба (1м):</span> <span class="price-tag">400 грн</span></li>
-                    <li><span>Абиссинский колодец:</span> <span class="price-tag">от 3000 грн</span></li>
+                    <li><span>Бурение (1м):</span> <span class="price-tag">Цена Договорная</span></li>
+                    <li><span>Оборудование:</span> <span class="price-tag">Цена Договорная</span></li>
+                    <li><span>Приямки:</span> <span class="price-tag">Цена Договорная</span></li>
                 </ul>
             </div>
         </div>
@@ -94,14 +281,39 @@
             <h2>Галерея работ</h2>
             <div class="card">
                 <div class="gallery-grid">
+                    <!-- Видео -->
                     <div class="gallery-item video">
-                        <video controls poster="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&q=80">
-                            <source src="https://cdn.coverr.co/videos/coverr-drilling-a-hole-in-the-ground-5594/1080p.mp4" type="video/mp4">
+                        <video controls playsinline preload="metadata"
+                            poster="/static/media/poster.jpg"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <source src="/static/media/video.webm" type="video/webm">
                         </video>
+                        <div class="video-fallback" style="display:none;">
+                            🎬 Видео недоступно<br>
+                            <small>Файл не найден или формат не поддерживается</small>
+                        </div>
                     </div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621112904887-4f5e2813c468?auto=format&fit=crop&w=400&q=80"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1590674899505-1c5c4195c16a?auto=format&fit=crop&w=400&q=80"></div>
+                    <!-- Фото с обработкой ошибок -->
+                    <div class="gallery-item">
+                        <img src="/static/media/photo1.jpg" alt="Бурение скважины 1" loading="lazy"
+                            onerror="this.src=''; this.alt='Фото 1 не найдено'; this.style.background='#f0f0f0'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='12px'; this.style.color='#999';">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/static/media/photo2.jpg" alt="Бурение скважины 2" loading="lazy"
+                            onerror="this.src=''; this.alt='Фото 2 не найдено'; this.style.background='#f0f0f0';">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/static/media/photo3.jpg" alt="Бурение скважины 3" loading="lazy"
+                            onerror="this.src=''; this.alt='Фото 3 не найдено'; this.style.background='#f0f0f0';">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/static/media/photo4.jpg" alt="Бурение скважины 4" loading="lazy"
+                            onerror="this.src=''; this.alt='Фото 4 не найдено'; this.style.background='#f0f0f0';">
+                    </div>
                 </div>
+            </div>
+            <div style="font-size: 12px; color: var(--tg-theme-hint-color); text-align: center; margin-top: 10px;">
+                Все фотографии и видео — реальные объекты наших работ
             </div>
         </div>
     </div>
@@ -109,19 +321,32 @@
     <!-- SERVICES -->
     <div id="view-services" class="view">
         <div class="container">
-            <h2>Обустройство</h2>
+            <h2>Услуги</h2>
             <div class="card">
                 <div class="step">
                     <div class="step-num">1</div>
-                    <div class="step-content"><strong>Выбор места</strong>Анализ участка.</div>
+                    <div class="step-content"><strong>Выбор места бурения</strong>Выезд специалиста на участок, консультация, геолого-гидрогеологическая разведка, определение оптимальной точки бурения.</div>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
-                    <div class="step-content"><strong>Бурение</strong>До водоносного слоя.</div>
+                    <div class="step-content"><strong>Бурение</strong>Бурение скважин на воду в труднодоступных местах малогабаритными буровыми установками, преимущественно по гранитам (безфильтровые скважины с открытым стволом).
+Обустройство скважин под ключ.</div>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
-                    <div class="step-content"><strong>Обсадка</strong>Стальные трубы.</div>
+                    <div class="step-content"><strong>Обсадка</strong>Используются пластиковые обсадные трубы Ф 110 - 160 мм. Сертифицированные для скважин под питьевую воду.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-content"><strong>Тампонирование скважин</strong>Стык обсадной трубы цементируется 500-м цементом, что обеспечивает герметичность скважины.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <div class="step-content"><strong>Обустройство скважины</strong>Монтаж приямка, (из кирпича или бетонных колец), подключение воды к дому и к поливной системе.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">6</div>
+                    <div class="step-content"><strong>Подключение оборудования</strong>Монтаж насоса и автоматики. Если потребуется подбор фильтрового оборудования.</div>
                 </div>
             </div>
         </div>
@@ -132,7 +357,7 @@
         <div class="container">
             <h2>Скидки и рассылка</h2>
             <div class="card">
-                <h3>Укажите данные для скидки</h3>
+                <h3>Скидки на бурение скважин зависят от района бурения. Варьируются от 5 до 10%. Для получения информации о скидках можно подписаться на рассылку, при этом выбрать примерный район бурения и оставить комментарий с контактными данными.</h3>
                 
                 <label style="font-size: 12px; color: var(--tg-theme-hint-color);">Ваш район бурения (обязательно)</label>
                 <select id="sub-region">
@@ -156,8 +381,12 @@
         <div class="container">
             <h2>Контакты</h2>
             <div class="card">
-                <p><strong>Телеграм:</strong> @drill_dnepr_bot</p>
-                <p><strong>Телефон:</strong> +38 (050) 123-45-67</p>
+                <p><strong>Телеграм:</strong> https://t.me/+__16096sL-E4YzBi</p>
+                <p><strong>Телефон:</strong> +38 (096) 157-02-02</p>
+                <p><strong>        </strong> +38 (063) 289-39-84</p>
+                <p><strong>        </strong> +38 (098) 790-82-10</p>
+                <p><strong>        </strong> +38 (095) 591-55-76</p>
+                <p><strong>Режим работы:</strong> Пн-Вс: 8:00-20:00</p>
                 <div style="text-align: center; margin-top: 15px; font-size: 12px; color: var(--tg-theme-hint-color);">
                     <a href="/admin" style="color: inherit; text-decoration: none;">Войти как Admin</a>
                 </div>
@@ -176,7 +405,10 @@
 
     <script>
         const tg = window.Telegram.WebApp;
-        if (tg) { tg.ready(); tg.expand(); }
+        if (tg) { 
+            tg.ready(); 
+            tg.expand(); 
+        }
         const user = tg ? tg.initDataUnsafe.user : null;
 
         // --- Загрузка регионов ---
@@ -194,6 +426,7 @@
                 });
             } catch (e) {
                 console.error("Ошибка загрузки регионов", e);
+                document.getElementById('sub-region').innerHTML = '<option value="" disabled selected>Ошибка загрузки</option>';
             }
         }
 
@@ -217,11 +450,15 @@
                 alert('Пожалуйста, выберите район бурения'); 
                 return; 
             }
-            if (!comment.trim()) { alert('Опишите задачу'); return; }
+            if (!comment.trim()) { 
+                alert('Опишите задачу'); 
+                return; 
+            }
 
             const statusDiv = document.getElementById('sub-status');
             const btn = document.getElementById('btn-sub');
-            btn.disabled = true; btn.innerText = "Отправка...";
+            btn.disabled = true; 
+            btn.innerText = "Отправка...";
             statusDiv.style.display = 'none';
 
             try {
@@ -233,7 +470,7 @@
                         first_name: user ? user.first_name : 'Test', 
                         username: user ? user.username : 'test', 
                         comment: comment,
-                        region_id: regionId // Отправляем как есть (строка или число)
+                        region_id: regionId
                     })
                 });
                 const result = await response.json();
@@ -249,21 +486,18 @@
                 }
             } catch (e) {
                 statusDiv.className = 'status-msg status-error';
-                statusDiv.innerText = "❌ Ошибка отправки";
+                statusDiv.innerText = "❌ Ошибка отправки: " + (e.message || 'Сетевая ошибка');
                 statusDiv.style.display = 'block';
                 console.error(e);
                 if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('error');
             } finally {
-                btn.disabled = false; btn.innerText = "Получить скидку";
+                btn.disabled = false; 
+                btn.innerText = "Получить скидку";
             }
         });
 
         // Запуск загрузки данных при старте
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadRegions);
-        } else {
-            loadRegions();
-        }
+        document.addEventListener('DOMContentLoaded', loadRegions);
     </script>
 </body>
 </html>
